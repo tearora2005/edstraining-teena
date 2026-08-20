@@ -1,0 +1,111 @@
+.banner-container .banner-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.banner {
+  --banner-background-color: #1473e6;
+  --banner-text-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  background-color: var(--banner-background-color);
+  color: var(--banner-text-color);
+}
+
+.banner .banner-image {
+  line-height: 0;
+}
+
+.banner .banner-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.banner .banner-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 24px;
+}
+
+.banner .banner-text h1,
+.banner .banner-text h2,
+.banner .banner-text h3,
+.banner .banner-text h4,
+.banner .banner-text h5,
+.banner .banner-text h6 {
+  margin: 0;
+  color: inherit;
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.banner .banner-text .button-wrapper {
+  margin: 0;
+}
+
+.banner .banner-text .button.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  border-color: var(--banner-text-color);
+  border-radius: 4px;
+  padding: 0.75em 1.5em;
+  color: var(--banner-text-color);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.banner .banner-text .button.secondary::after {
+  content: "\2192";
+}
+
+.banner .banner-text .button.secondary:hover,
+.banner .banner-text .button.secondary:focus-visible {
+  border-color: var(--banner-text-color);
+  background-color: transparent;
+  color: var(--banner-text-color);
+  opacity: 0.7;
+}
+
+.banner.dark {
+  --banner-background-color: #1d1d1d;
+}
+
+@media (width >= 600px) {
+  .banner {
+    flex-direction: row;
+    min-height: 400px;
+  }
+
+  .banner .banner-image {
+    flex: 0 0 50%;
+    min-width: 0;
+  }
+
+  .banner .banner-image img {
+    height: 100%;
+    aspect-ratio: unset;
+  }
+
+  .banner .banner-text {
+    flex: 1;
+    gap: 32px;
+    padding: 48px 56px;
+  }
+
+  .banner .banner-text h1,
+  .banner .banner-text h2,
+  .banner .banner-text h3,
+  .banner .banner-text h4,
+  .banner .banner-text h5,
+  .banner .banner-text h6 {
+    font-size: var(--heading-font-size-xxl);
+  }
+}
