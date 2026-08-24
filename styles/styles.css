@@ -14,6 +14,7 @@
   /* colors */
   --background-color:cyan;
   --light-color: #f8f8f8;
+  --lightgrey-color: #e9e9e9;
   --dark-color: #505050;
   --text-color: magenta;
   --link-color: #3b63fb;
@@ -320,6 +321,12 @@ main > .section:first-of-type {
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
+  margin: 0;
+  padding: 40px 0;
+}
+
+main .section.lightgreybg {
+  background-color: var(--lightgrey-color);
   margin: 0;
   padding: 40px 0;
 }
