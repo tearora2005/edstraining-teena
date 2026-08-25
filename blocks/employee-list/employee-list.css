@@ -1,0 +1,28 @@
+.employee-list {
+  background-color: var(--light-color);
+  padding: 24px;
+}
+
+.employee-list table {
+  width: 100%;
+  border: 1px solid var(--dark-color);
+  border-collapse: collapse;
+}
+
+.employee-list th,
+.employee-list td {
+  padding: 8px 12px;
+  border: 1px solid var(--dark-color);
+  text-align: left;
+}
+
+.employee-list th {
+  color: var(--dark-color);
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+}
+
+.employee-list .employee-list-load-more {
+  display: block;
+  margin: 24px auto 0;
+}
