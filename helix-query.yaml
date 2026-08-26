@@ -1,0 +1,29 @@
+version: 1
+# See https://www.aem.live/docs/setup-indexing
+
+indices:
+  site:
+    include:
+      - '/**'
+    exclude:
+      - '/nav'
+      - '/footer'
+      - '/metadata'
+      - '/placeholders'
+      - '/redirects'
+      - '/query-index'
+    target: '/query-index'
+    properties:
+      # `path` is included automatically for every indexed page and needs no definition here.
+      title:
+        select: head > meta[property="og:title"]
+        value: |
+          attribute(el, 'content')
+      description:
+        select: head > meta[name="description"]
+        value: |
+          attribute(el, 'content')
+      image:
+        select: head > meta[property="og:image"]
+        value: |
+          match(attribute(el, 'content'), 'https:\/\/[^/]+(\/.*)')
