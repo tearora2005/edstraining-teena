@@ -5,6 +5,13 @@ indices:
   site:
     include:
       - '/**'
+    exclude:
+      - '/nav'
+      - '/footer'
+      - '/metadata'
+      - '/placeholders'
+      - '/redirects'
+      - '/query-index'
     target: '/query-index'
     properties:
       # `path` is included automatically for every indexed page and needs no definition here.
