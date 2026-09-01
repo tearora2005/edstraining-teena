@@ -1,33 +1,101 @@
+/* Columns block — values extracted from wknd-trendsetters.site computed styles */
+
+/* Mobile-first: stack cells vertically */
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: 24px;
+}
+
+/* Images: rounded, 3:2 crop, fill their cell */
+.columns picture {
+  display: block;
+  line-height: 0;
 }
 
 .columns img {
-  width: 100%;
-}
-
-.columns > div > div {
-  order: 1;
-}
-
-.columns > div > .columns-img-col {
-  order: 0;
-}
-
-.columns > div > .columns-img-col img {
   display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
+/* Headings */
+.columns h1 {
+  letter-spacing: -1.12px;
+}
+
+/* Intro subheading spacing */
+.columns h1 + p {
+  margin-top: 24px;
+}
+
+/* CTA link group (intro hero) — plain links styled as pill buttons */
+.columns p:has(> a) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+/* Intro hero: three photos grouped in one image cell render as a 2-col grid */
+.columns .columns-img-col p {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0;
+}
+
+.columns p a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 12px 24px;
+  border: 2px solid #000;
+  border-radius: 9999px;
+  background-color: #000;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.columns p a:any-link:hover {
+  text-decoration: none;
+}
+
+/* Secondary CTA (second link) — outlined */
+.columns p a:any-link ~ a:any-link {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Desktop: two equal columns, vertically centered */
 @media (width >= 900px) {
   .columns > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    flex-direction: unset;
     gap: 24px;
   }
 
-  .columns > div > div {
-    flex: 1;
-    order: unset;
+  /* Intro hero uses a wider gutter */
+  .columns > div:has(.columns-img-col > p) {
+    gap: 64px;
+  }
+
+  .columns h1 {
+    font-size: 56px;
+    line-height: 1.1;
+  }
+
+  .columns h2 {
+    font-size: 40px;
+    line-height: 1.1;
   }
 }

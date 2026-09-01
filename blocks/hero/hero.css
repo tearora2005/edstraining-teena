@@ -1,37 +1,129 @@
-.hero-container .hero-wrapper {
+/* Hero block: full-width dark band with a centered rounded image card,
+   bottom gradient overlay, and bottom-left text + CTA.
+   Values extracted from wknd-trendsetters.site closing hero banner. */
+
+/* Full-width black band (section) */
+.hero-container {
+  margin: 0;
+  padding: 72px 24px;
+  background-color: var(--dark-color);
+}
+
+/* Remove the global .section > div max-width/padding constraint so the
+   card can size itself and center within the band. */
+.hero-wrapper {
   max-width: unset;
+  margin: 0;
   padding: 0;
 }
 
+/* The rounded image card */
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  max-width: 1152px;
+  min-height: 320px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+/* Bottom gradient overlay above the image, below the text */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: linear-gradient(to top, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 0%) 60%);
+  pointer-events: none;
+}
+
+/* Image row (first row) — sits in flow and defines card height */
+.hero > div:first-child {
+  position: relative;
+  z-index: 0;
+  line-height: 0;
+}
+
+.hero > div:first-child picture {
+  display: block;
+}
+
+.hero > div:first-child img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text row (second row) — overlaid at the bottom-left */
+.hero > div:last-child {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  box-sizing: border-box;
+  max-width: 672px;
+  padding: 32px 24px;
   color: var(--background-color);
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+.hero h2 {
+  margin: 0;
+  color: var(--background-color);
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -0.64px;
 }
 
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.hero p {
+  margin: 16px 0 0;
+  color: var(--background-color);
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+}
+
+/* "See more" CTA — white pill, black text */
+.hero p:last-child {
+  margin-top: 28px;
+}
+
+.hero a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--background-color);
+  border-radius: 9999px;
+  padding: 12px 24px;
+  background-color: var(--background-color);
+  color: var(--dark-color);
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.hero a:any-link:hover {
+  background-color: var(--light-color);
+  border-color: var(--light-color);
+  color: var(--dark-color);
+  text-decoration: none;
 }
 
 @media (width >= 900px) {
+  .hero-container {
+    padding: 128px 32px;
+  }
+
   .hero {
-    padding: 40px 32px;
+    min-height: 448px;
+  }
+
+  .hero > div:last-child {
+    padding: 64px;
+  }
+
+  .hero h2 {
+    font-size: 56px;
+    line-height: 1.1;
+    letter-spacing: -1.12px;
   }
 }
