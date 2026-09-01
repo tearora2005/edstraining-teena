@@ -10,6 +10,9 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  readBlockConfig,
+  toClassName,
+  toCamelCase,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -143,6 +146,34 @@ function decorateButtons(main) {
 }
 
 /**
+ * Applies Section Metadata blocks as section classes/styles, then removes them.
+ * The core aem.js in this project does not consume `.section-metadata` natively,
+ * so we handle it here (mirrors the standard EDS behavior): a `style` row becomes
+ * space-separated classes on the section wrapper.
+ * @param {Element} main The main element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll(':scope > div > div.section-metadata').forEach((meta) => {
+    const section = meta.closest(':scope > div') || meta.parentElement;
+    const config = readBlockConfig(meta);
+    Object.keys(config).forEach((key) => {
+      if (key === 'style') {
+        config.style.split(',').forEach((s) => {
+          const cls = toClassName(s.trim());
+          if (cls) section.classList.add(cls);
+        });
+      } else if (key === 'anchor' || key === 'id') {
+        // set a section id so in-page jump links (e.g. #trends) resolve
+        section.id = toClassName(config[key]);
+      } else {
+        section.dataset[toCamelCase(key)] = config[key];
+      }
+    });
+    meta.remove();
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -150,6 +181,7 @@ function decorateButtons(main) {
 export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
+  decorateSectionMetadata(main);
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);

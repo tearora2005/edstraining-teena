@@ -1,0 +1,15 @@
+{
+  "type": "da",
+  "sites": {
+    "edstraining-teena": {
+      "previewOrg": "tearora2005",
+      "previewSite": "edstraining-teena",
+      "contentHostUrl": "https://content.da.live/tearora2005/edstraining-teena/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  },
+  "features": [
+    "site-planning"
+  ],
+  "pluginRoot": "/home/node/.excat-marketplaces/excat-marketplace/excat"
+}
