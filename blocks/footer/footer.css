@@ -1,20 +1,125 @@
+/* Footer — migrated from wknd-trendsetters.site */
+
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: #000;
+  color: #fff;
 }
 
-footer .footer > div {
+footer .footer-inner {
+  box-sizing: border-box;
   margin: auto;
   max-width: 1200px;
-  padding: 40px 24px 24px;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-footer .footer p {
+footer .footer-inner p { margin: 0; }
+
+footer .footer-inner ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
 
+/* brand + social */
+footer .footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+footer .footer-brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: -0.4px;
+  text-decoration: none;
+}
+
+footer .footer-brand-mark {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+}
+
+footer .footer-brand-mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+footer .footer-social {
+  display: flex;
+  gap: 16px;
+}
+
+footer .footer-social a {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  color: #999;
+  transition: color 0.2s ease;
+}
+
+footer .footer-social a svg {
+  width: 100%;
+  height: 100%;
+}
+
+footer .footer-social a:hover { color: #fff; }
+
+/* link columns */
+footer .footer-columns > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+footer .footer-column-heading {
+  margin: 0 0 12px;
+  color: #999;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+footer .footer-column-links li { margin: 8px 0; }
+
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer-column-links a {
+  color: #999;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+footer .footer-column-links a:hover { color: #fff; }
+
+/* tablet+ : brand row and columns side by side */
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+  footer .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 80px 24px;
+    gap: 64px;
+  }
+
+  footer .footer-brand { flex: 0 0 auto; }
+
+  footer .footer-columns { flex: 1 1 auto; }
+
+  footer .footer-columns > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 48px;
+    justify-items: start;
+    max-width: 640px;
+    margin-left: auto;
   }
 }
