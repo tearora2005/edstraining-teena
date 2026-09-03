@@ -2,8 +2,11 @@
    bottom gradient overlay, and bottom-left text + CTA.
    Values extracted from wknd-trendsetters.site closing hero banner. */
 
-/* Full-width black band (section) */
-.hero-container {
+/* Full-width black band (section).
+   Scoped as `main .section.hero-container` so the hero band stays black even
+   when the section is authored with another style (e.g. "grey"), whose global
+   rule (`main .section.grey`) would otherwise win on specificity. */
+main .section.hero-container {
   margin: 0;
   padding: 72px 24px;
   background-color: var(--dark-color);
@@ -99,13 +102,19 @@
   font-weight: 600;
   line-height: 1.6;
   text-decoration: none;
+
+  /* signature offset shadow (translucent white) from the source inverse button */
+  box-shadow: 4px 4px rgb(255 255 255 / 30%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hero a:any-link:hover {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
+  background-color: var(--background-color);
+  border-color: var(--background-color);
   color: var(--dark-color);
   text-decoration: none;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px rgb(255 255 255 / 30%);
 }
 
 @media (width >= 900px) {
