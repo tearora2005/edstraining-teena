@@ -1,0 +1,99 @@
+/* Article List block — styled to project design tokens */
+
+.article-list .article-list-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.article-list-card {
+  display: flex;
+}
+
+.article-list-card-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+  background-color: var(--background-color, #fff);
+  border: 1px solid var(--lightgrey-color, #e9e9e9);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.article-list-card-link:hover {
+  border-color: var(--text-color, #000);
+  transform: translateY(-2px);
+}
+
+.article-list-card-image {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.article-list-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-list-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.article-list-card-title {
+  margin: 0;
+  color: var(--text-color, #000);
+  font-family: var(--heading-font-family, syncopate, 'Syncopate Fallback', sans-serif);
+  font-size: var(--heading-font-size-s, 14px);
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: -0.2px;
+}
+
+.article-list-card-description {
+  margin: 0;
+  color: var(--link-color, #666);
+  font-family: var(--body-font-family, 'Instrument Sans', 'Instrument Sans Fallback', sans-serif);
+  font-size: var(--body-font-size-s, 16px);
+  line-height: 1.5;
+
+  /* clamp to a few lines so cards stay even */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.article-list .article-list-load-more {
+  display: block;
+  margin: 32px auto 0;
+}
+
+.article-list .article-list-load-more[disabled] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+@media (width >= 600px) {
+  .article-list .article-list-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .article-list .article-list-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+}
